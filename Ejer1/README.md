@@ -2,4 +2,4 @@
 
 Sirve para traducir el código fuente (lenguaje de alto nivel) de un programa a un lenguaje de bajo nivel, normalmente código máquina. 
 
-Después de compilar obtendremos un ejecutable.
+Después de compilar obtendremos un archivo en código objeto no ejecutable.
