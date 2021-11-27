@@ -1,0 +1,44 @@
+1. Ejecutamos el intérprete, escribimos las sentencias y luego pulsamos intro:
+
+naila@naila-VirtualBox:~/Github/EjersTema2ED/Ejer7/lisp$ clisp
+  i i i i i i i       ooooo    o        ooooooo   ooooo   ooooo
+  I I I I I I I      8     8   8           8     8     o  8    8
+  I  \ `+' /  I      8         8           8     8        8    8
+   \  `-+-'  /       8         8           8      ooooo   8oooo
+    `-__|__-'        8         8           8           8  8
+        |            8     o   8           8     o     8  8
+  ------+------       ooooo    8oooooo  ooo8ooo   ooooo   8
+
+Welcome to GNU CLISP 2.49.92 (2018-02-18) <http://clisp.org/>
+
+Copyright (c) Bruno Haible, Michael Stoll 1992-1993
+Copyright (c) Bruno Haible, Marcus Daniels 1994-1997
+Copyright (c) Bruno Haible, Pierpaolo Bernardi, Sam Steingold 1998
+Copyright (c) Bruno Haible, Sam Steingold 1999-2000
+Copyright (c) Sam Steingold, Bruno Haible 2001-2018
+
+Type :h and hit Enter for context help.
+
+[1]> (format t "Hola soy Naila")
+Hola soy Naila
+Bye.
+
+*Para salir del intérprete pulsamos CTRL + D.
+
+Ahora haremos un Script ejecutable:
+
+1. Creamos el archivo .lisp y escribimos las sigueintes sentencias:
+
+naila@naila-VirtualBox:~/Github/EjersTema2ED/Ejer7/lisp$ cat > HolasoyNaila.lisp
+#!/usr/bin/env clisp
+
+(format t "Hola soy Naila")
+
+2. Damos permiso de ejecucuión al usuario principal:
+
+naila@naila-VirtualBox:~/Github/EjersTema2ED/Ejer7/lisp$ chmod u+x HolasoyNaila.lisp 
+
+3. Ejecutamos:
+
+naila@naila-VirtualBox:~/Github/EjersTema2ED/Ejer7/lisp$ ./HolasoyNaila.lisp 
+Hola soy Naila

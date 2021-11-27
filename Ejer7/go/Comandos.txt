@@ -1,0 +1,20 @@
+1. Creamos el archivo .go con las sigueinte líneas de código:
+
+naila@naila-VirtualBox:~/Github/EjersTema2ED/Ejer7/go$ cat > HolasoyNaila.go
+package main
+
+import "fmt"
+
+func main() {
+	fmt.Println("Hola soy Naila")
+}
+
+2. Compilamos y enlazamos:
+
+naila@naila-VirtualBox:~/Github/EjersTema2ED/Ejer7/go$ go build HolasoyNaila.go 
+
+3. Ejecutamos:
+
+naila@naila-VirtualBox:~/Github/EjersTema2ED/Ejer7/go$ ./HolasoyNaila
+Hola soy Naila
+

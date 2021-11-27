@@ -1,0 +1,16 @@
+1. Creamos el archivo .rs y escribimos las siguientes sentencias:
+
+naila@naila-VirtualBox:~/Github/EjersTema2ED/Ejer7/rust$ cat > HolasoyNaila.rs
+fn main() {
+	println!("Hola soy Naila");
+}
+
+2. Compilamos y enlazamos:
+
+naila@naila-VirtualBox:~/Github/EjersTema2ED/Ejer7/rust$ rustc HolasoyNaila.rs 
+
+3. Ejecutamos:
+
+naila@naila-VirtualBox:~/Github/EjersTema2ED/Ejer7/rust$ ./HolasoyNaila 
+Hola soy Naila
+

@@ -1,0 +1,18 @@
+1. Creamos el archivo .java con las sigueintes líneas de código:
+
+naila@naila-VirtualBox:~/Github/EjersTema2ED/Ejer7/java$ cat > HolasoyNaila.java
+class HolasoyNaila
+{
+	public static void main(String[] args)
+	{
+		System.out.println("Hola soy Naila");
+	}
+}
+
+2. Compilamos:
+
+naila@naila-VirtualBox:~/Github/EjersTema2ED/Ejer7/java$ javac HolasoyNaila.java 
+3. Interpretamos y ejecutamos:
+
+naila@naila-VirtualBox:~/Github/EjersTema2ED/Ejer7/java$ java HolasoyNaila
+Hola soy Naila

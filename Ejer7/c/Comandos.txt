@@ -1,0 +1,19 @@
+1. Creamos el archivo .c con el nombre que queremos y escribimos las siguiente líneas de código en c:
+
+naila@naila-VirtualBox:~/Github/EjersTema2ED/Ejer7/c$ cat > HolasoyNaila.c
+#include <stdio.h>
+
+int main()
+{
+	printf("¡Hola soy Naila!\n");
+	return 0;
+}
+
+2. Ahora compilamos y enlazamos el archivo:
+
+naila@naila-VirtualBox:~/Github/EjersTema2ED/Ejer7/c$ gcc -o HolasoyNaila HolasyNaila.c
+
+3. Ejecutamos el archivo:
+naila@naila-VirtualBox:~/Github/EjersTema2ED/Ejer7/c$ ./HolasoyNaila 
+¡Hola soy Naila!
+ 

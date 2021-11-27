@@ -1,0 +1,22 @@
+1. Creamos el archivo .cpp y escribimos las líneas de código para c++:
+
+naila@naila-VirtualBox:~/Github/EjersTema2ED/Ejer7/c++$ cat > HolasoyNaila.cpp
+#include <iostream>
+using namespace std;
+
+int main()
+{
+	cout<<"Hola soy Naila \n";
+	return 0;
+}
+
+2. A continuación compilamos y enlazamos:
+
+naila@naila-VirtualBox:~/Github/EjersTema2ED/Ejer7/c++$ g++ -o HolasoyNaila HolasoyNaila.cpp
+
+3. Por último ejecutamos el archivo:
+ 
+naila@naila-VirtualBox:~/Github/EjersTema2ED/Ejer7/c++$ ./HolasoyNaila 
+Hola soy Naila 
+ 
+

@@ -1,0 +1,35 @@
+1. Creamos el archivo .asm con las sigueinte líneas de código:
+
+naila@naila-VirtualBox:~/Github/EjersTema2ED/Ejer7/ensamblador$ cat > HolasoyNaila.asm
+section .data
+
+msg	db "Hola soy Naila", 0Ah
+len	equ     $ - msg
+
+section .text
+
+global _start
+
+_start:
+	mov 	eax, 04h
+	mov	ebx, 01h
+	mov	ecx, msg
+	mov	edx, len
+	int     80h
+	mov	eax, 01h
+	mov	ebx, 00h
+	int     80h
+
+2. Ensamblamos (Emsamblado para ELF64):
+
+naila@naila-VirtualBox:~/Github/EjersTema2ED/Ejer7/ensamblador$ nasm -f elf64 HolasoyNaila.asm 
+
+3. Enlazamos (Enlazado y generación de ejecutable):
+
+naila@naila-VirtualBox:~/Github/EjersTema2ED/Ejer7/ensamblador$ ld HolasoyNaila.o -o HolasoyNaila
+
+4. Ejecutamos:
+
+naila@naila-VirtualBox:~/Github/EjersTema2ED/Ejer7/ensamblador$ ./HolasoyNaila 
+Hola soy Naila
+

@@ -1,0 +1,25 @@
+1. Ejecutamos el intérprete y escribimos las sentencias y pulsamos intro:
+
+naila@naila-VirtualBox:~/Github/EjersTema2ED/Ejer7/ruby$ ruby
+puts "Hola soy Naila"
+
+Hola soy Naila
+*Para salir pulsamos CTRL + D
+
+Ahora creamos un Script ejecutable:
+
+1. Creamos el archivo .rb con las sigueinte líneas de código:
+
+naila@naila-VirtualBox:~/Github/EjersTema2ED/Ejer7/ruby$ cat > HolasoyNaila.rb
+#!/usr/bin/env ruby
+
+puts "Hola soy Naila"
+
+2. Damos permiso de ejecucuión al usuario principal:
+
+naila@naila-VirtualBox:~/Github/EjersTema2ED/Ejer7/ruby$ chmod u+x HolasoyNaila.rb 
+
+3. Ejecutamos:
+
+naila@naila-VirtualBox:~/Github/EjersTema2ED/Ejer7/ruby$ ./HolasoyNaila.rb 
+Hola soy Naila
