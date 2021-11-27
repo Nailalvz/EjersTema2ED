@@ -1,0 +1,27 @@
+1. Creamos el archivo .php con el nombre que queramos:
+
+naila@naila-VirtualBox:~/Github/EjersTema2ED/Ejer7/php$ cat > HolasoyNaila.php
+#!/bin/php
+
+<?php echo "Hola soy Naila" ?>
+
+2.Le damos permiso de ejecución solo al usuario principal:
+ 
+naila@naila-VirtualBox:~/Github/EjersTema2ED/Ejer7/php$ chmod u+x HolasoyNaila.php 
+
+3. Comprobamos que se ha dado el permiso:
+
+naila@naila-VirtualBox:~/Github/EjersTema2ED/Ejer7/php$ ls -la
+total 12
+drwxrwxr-x 2 naila naila 4096 nov 27 13:29 .
+drwxrwxr-x 5 naila naila 4096 nov 27 13:27 ..
+-rwxrw-r-- 1 naila naila   43 nov 27 13:29 HolasoyNaila.php
+
+4. Ejecutamos el archivo:
+naila@naila-VirtualBox:~/Github/EjersTema2ED/Ejer7/php$ ./HolasoyNaila.php 
+
+Hola soy Nailanaila@naila-VirtualBox:~/Github/EjersTema2ED/Ejer7/php$ 
+
+Nota: En este caso después del Hola soy Naila no hay un salto de línea por eso la salida está en la misma línea si queremos que haya un salto en el código deberemos escribir:
+
+<?php echo "Hola soy Naila\n" ?>

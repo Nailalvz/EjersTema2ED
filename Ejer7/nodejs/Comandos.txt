@@ -1,0 +1,31 @@
+1. Creamos el archivo .js con el nombre que deseemos y escribimos las líneas de código siguientes:
+
+naila@naila-VirtualBox:~/Github/EjersTema2ED/Ejer7/nodejs$ cat > HolasoyNaila.js
+#!/bin/nodejs
+
+console.log('Hola soy Naila');
+
+2. Volvemos a comprobar los permisos:
+
+naila@naila-VirtualBox:~/Github/EjersTema2ED/Ejer7/nodejs$ ls -la
+total 12
+drwxr-xr-x 2 naila naila 4096 nov 27 13:36 .
+drwxrwxr-x 6 naila naila 4096 nov 27 13:36 ..
+-rw-r--r-- 1 naila naila   45 nov 27 13:37 HolasoyNaila.js
+
+3. Damos permiso de ejecución al usuario principal y comprobamos que se haya dado correctamente:
+
+naila@naila-VirtualBox:~/Github/EjersTema2ED/Ejer7/nodejs$ chmod u+x HolasoyNaila.js 
+
+naila@naila-VirtualBox:~/Github/EjersTema2ED/Ejer7/nodejs$ ls -la
+total 12
+drwxr-xr-x 2 naila naila 4096 nov 27 13:36 .
+drwxrwxr-x 6 naila naila 4096 nov 27 13:36 ..
+-rwxr--r-- 1 naila naila   45 nov 27 13:37 HolasoyNaila.js
+
+4. Ejecutamos el archivo: 
+ 
+naila@naila-VirtualBox:~/Github/EjersTema2ED/Ejer7/nodejs$ ./HolasoyNaila.js 
+Hola soy Naila
+naila@naila-VirtualBox:~/Github/EjersTema2ED/Ejer7/nodejs$ 
+
