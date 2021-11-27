@@ -1,0 +1,30 @@
+1. Creamos el archivo .py con el comando cat y escribimos las líneas de coódigo en python.
+
+naila@naila-VirtualBox:~/Github/EjersTema2ED/Ejer7/python$ cat > HolasoyNaila.py
+#!/bin/python
+
+print"Hola soy Naila"
+
+2. Comprobamos los permisos de nuestro archivo para ver si tenemos permisos de ejecución.
+
+naila@naila-VirtualBox:~/Github/EjersTema2ED/Ejer7/python$ ls -la
+total 12
+drwxrwxr-x 2 naila naila 4096 nov 27 13:18 .
+drwxrwxr-x 4 naila naila 4096 nov 27 13:17 ..
+-rw-rw-r-- 1 naila naila   15 nov 27 13:18 HolasoyNaila.py
+
+3. No disponemos de permisos de ejecucuión, esta vez le daremos permisos de ejecución solo al propietario:
+
+naila@naila-VirtualBox:~/Github/EjersTema2ED/Ejer7/python$ chmod u+x HolasoyNaila.py 
+
+4. Volveremos a comprobar los permisos del archivo:
+naila@naila-VirtualBox:~/Github/EjersTema2ED/Ejer7/python$ ls -la
+total 12
+drwxrwxr-x 2 naila naila 4096 nov 27 13:18 .
+drwxrwxr-x 4 naila naila 4096 nov 27 13:17 ..
+-rwxrw-r-- 1 naila naila   15 nov 27 13:18 HolasoyNaila.py
+
+5. Ahora ejecutaremos el archivo apra comprobar si funciona:
+ 
+naila@naila-VirtualBox:~/Github/EjersTema2ED/Ejer7/python$ ./HolasoyNaila.py 
+Hola soy Naila
