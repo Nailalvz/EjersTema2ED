@@ -1,0 +1,20 @@
+1. Creamos el archivo .sh con el nombre que queramos y a continuación escribimos las líneas de código:
+
+naila@naila-VirtualBox:~/Github/EjersTema2ED/Ejer7/bash$ cat > HolasoyNaila.sh
+#!/bin/bash
+
+echo "Hola soy Naila"
+
+2. Ejecutamos el archivo .sh escrito en bash. En mi caso me ha dado un error de que no dispongo del permiso para ejecutarlo:
+
+naila@naila-VirtualBox:~/Github/EjersTema2ED/Ejer7/bash$ ./HolasoyNaila.sh
+bash: ./HolasoyNaila.sh: Permission denied
+
+3. Si sucede esto con el comando chmod daremos permiso de ejecución para todos:
+
+naila@naila-VirtualBox:~/Github/EjersTema2ED/Ejer7/bash$ chmod +x HolasoyNaila.sh 
+
+4. Por último volveremos a ejecutar:
+
+naila@naila-VirtualBox:~/Github/EjersTema2ED/Ejer7/bash$ ./HolasoyNaila.sh
+Hola soy Naila
