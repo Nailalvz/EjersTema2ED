@@ -1,4 +1,4 @@
-1. Ejecutamos el intérprete y escribimos las sentencias y pulsamos intro:
+1. Ejecutamos el intérprete, escribimos las sentencias y pulsamos intro:
 
 naila@naila-VirtualBox:~/Github/EjersTema2ED/Ejer7/ruby$ ruby
 puts "Hola soy Naila"
