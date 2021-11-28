@@ -1,0 +1,81 @@
+1. Creamos el directorio aritmetica
+
+naila@naila-VirtualBox:~/Github/EjersTema2ED/Ejer19$ mkdir aritmetica
+
+2. Nos situamos en él
+
+naila@naila-VirtualBox:~/Github/EjersTema2ED/Ejer19$ cd aritmetica
+
+3. Creamos el archivo Aritmetica.java con las sigueinte líneas de código
+
+naila@naila-VirtualBox:~/Github/EjersTema2ED/Ejer19/aritmetica$ cat > Aritmetica.java
+package aritmetica;
+
+public class Aritmetica {
+	 
+	public static int suma (int sumando1, int sumando2) {
+		return (sumando1 + sumando2);
+	}
+
+	public static int resta (int minuendo, int sustraendo) {
+		return (minuendo-sustraendo);
+	}
+
+	public static int multiplicacion (int numero1, int numero2) {
+		return (numero1 * numero2);
+        }
+
+	public static float division (int dividendo, int divisor) {
+	        return (dividendo/(float)divisor);
+	}
+}
+
+4. Compilamos
+
+naila@naila-VirtualBox:~/Github/EjersTema2ED/Ejer19/aritmetica$ javac Aritmetica.java 
+
+5. Creamos el paquete jar fuera del directorio creado en el primer paso
+
+naila@naila-VirtualBox:~/Github/EjersTema2ED/Ejer19/aritmetica$ cd ..
+
+naila@naila-VirtualBox:~/Github/EjersTema2ED/Ejer19$ jar cvf aritmetica.jar aritmetica/*.class
+added manifest
+adding: aritmetica/Aritmetica.class(in = 434) (out= 265)(deflated 38%)
+
+6. Instalamos la biblioteca en el sistema con el comando sudo
+
+naila@naila-VirtualBox:~/Github/EjersTema2ED/Ejer19$ sudo mv Aritmetica.jar /usr/lib/jvm/java-8-openjdk-amd64/jre/lib/ext/aritm.jar
+[sudo] password for naila: 
+
+7. Creamos el archivo Main.java con las siguiente líneas de código
+
+naila@naila-VirtualBox:~/Github/EjersTema2ED/Ejer19$ cat > Main.java
+import aritmetica.Aritmetica;
+
+public class Main {
+
+	private static final int NUM1 = 5;
+	private static final int NUM2 = 2;
+
+	public static void main (String[] args) {
+		System.out.println ("Dados los números " + NUM1 + " y " + NUM2);
+		System.out.println ("La suma es " + Aritmetica.suma(NUM1, NUM2) );
+		System.out.println ("La resta es " + Aritmetica.resta(NUM1, NUM2) );
+		System.out.println ("La multiplicación es " + Aritmetica.multiplicacion(NUM1, NUM2) );
+		System.out.println ("La división es " + Aritmetica.division(NUM1, NUM2) );
+	}
+}
+
+8. Compilamos
+
+naila@naila-VirtualBox:~/Github/EjersTema2ED/Ejer19$ javac Main.java
+
+9. Ejecutamos para comprobar que todo funcione bien
+
+naila@naila-VirtualBox:~/Github/EjersTema2ED/Ejer19$ java Main
+Dados los números 5 y 2
+La suma es 7
+La resta es 3
+La multiplicación es 10
+La división es 2.5
+
