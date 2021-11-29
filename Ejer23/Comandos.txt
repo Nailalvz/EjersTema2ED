@@ -1,0 +1,170 @@
+Nota: Para que todo esto funcione deberemos instalar ant con el comando:
+sudo apt install ant
+
+1. Creamos el directorio aritmetica
+
+naila@naila-VirtualBox:~/Github/EjersTema2ED/Ejer23$ mkdir aritmetica
+
+2. Dentro del directorio creado crearemos el archivo Aritmetica.java con las suiguientes líneas de código:
+
+naila@naila-VirtualBox:~/Github/EjersTema2ED/Ejer23$ cat > aritmetica/Aritmetica.java
+package aritmetica;
+
+public class Aritmetica {
+
+  public static int suma (int sumando1, int sumando2) {
+        return (sumando1+sumando2);
+  }
+
+  public static int resta  (int minuendo, int sustraendo) {
+        return (minuendo-sustraendo);
+  }
+
+  public static int multiplicacion (int  numero1, int numero2) {
+        return (numero1*numero2);
+  }
+
+  public static float division (int dividendo, int divisor) {
+        return (dividendo/(float)divisor);
+  }
+
+}
+
+3. Creamos fuera del directorio aritmetica el archivo Main.java
+
+naila@naila-VirtualBox:~/Github/EjersTema2ED/Ejer23$ cat > Main.java
+import aritmetica.Aritmetica;
+
+public class Main {
+
+  private static final int NUM1 = 5;
+  private static final int NUM2 = 2;
+
+
+  public static void main (String[] args) {
+    System.out.println ("Dados los números " + NUM1 + " y " + NUM2 );
+    System.out.println ("La suma es " + Aritmetica.suma(NUM1, NUM2) );
+    System.out.println ("La resta es " + Aritmetica.resta(NUM1, NUM2) );
+    System.out.println ("La multiplicación es " + Aritmetica.multiplicacion(NUM1, NUM2) );
+    System.out.println ("La división es " + Aritmetica.division(NUM1, NUM2) );
+  }
+
+
+}
+
+4. Creamos también el archivo build.xml con las sigueintes sentencias
+
+naila@naila-VirtualBox:~/Github/EjersTema2ED/Ejer23$ cat > build.xml
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="programa" default="jar" basedir=".">
+  <description>Programa que usa biblioteca aritmetica.</description>
+    <!-- Ejemplo de archivo de construcción (buildfile)
+         Para crear este archivo se ha consultado:
+         https://ant.apache.org/manual/tutorial-HelloWorldWithAnt.html
+         (cc0) jamj2000
+    -->
+    <property name="src.dir"     value="."/>
+    <property name="build.dir"   value="build"/>
+    <property name="classes.dir" value="${build.dir}/classes"/>
+    <property name="jar.dir"     value="${build.dir}/jar"/>
+    <property name="main-class"  value="Main"/>
+
+
+    <!-- Creamos directorios para el resultado de la compilación --> 
+    <target name="init">
+      <mkdir dir="${classes.dir}"/>
+      <mkdir dir="${jar.dir}"/>
+    </target>
+
+
+    <!-- Indicamos directorio donde se hallan las clases --> 
+    <path id="compile.classpath">
+        <fileset dir="aritmetica" />
+    </path>
+
+
+    <!-- Compilamos --> 
+    <target name="compile" depends="init" >
+      <javac srcdir="${src.dir}" destdir="${classes.dir}" includeantruntime="false" debug="true" >
+        <classpath refid="compile.classpath"/>
+      </javac>
+    </target>
+
+
+    <!-- Creamos archivo .jar --> 
+    <target name="jar" depends="compile">
+      <jar destfile="${jar.dir}/${ant.project.name}.jar" basedir="${classes.dir}">
+        <manifest>
+          <attribute name="Main-Class" value="${main-class}"/>
+        </manifest>
+      </jar>
+    </target>
+
+
+    <!-- Ejecutamos --> 
+    <target name="run" depends="jar">
+      <java jar="${jar.dir}/${ant.project.name}.jar" fork="true"/>
+    </target>
+
+
+    <!-- Borramos archivos generados --> 
+    <target name="clean">
+      <delete dir="build" />
+    </target>
+
+
+    <!-- Mostramos ayuda --> 
+    <target name="help">      
+      <echo level="info">
+        Objetivos válidos para ant:
+
+          jar (el objetivo por defecto si no se indica nada)
+          compile
+          run
+          clean
+          help
+      </echo>
+    </target>
+
+</project>
+
+5. Ejecutaremos el comando ant sin argumentos y obtendremos la siguiente salida
+
+naila@naila-VirtualBox:~/Github/EjersTema2ED/Ejer23$ ant
+Buildfile: /home/naila/Github/EjersTema2ED/Ejer23/build.xml
+
+init:
+    [mkdir] Created dir: /home/naila/Github/EjersTema2ED/Ejer23/build/classes
+    [mkdir] Created dir: /home/naila/Github/EjersTema2ED/Ejer23/build/jar
+
+compile:
+    [javac] Compiling 2 source files to /home/naila/Github/EjersTema2ED/Ejer23/build/classes
+
+jar:
+      [jar] Building jar: /home/naila/Github/EjersTema2ED/Ejer23/build/jar/programa.jar
+
+BUILD SUCCESSFUL
+Total time: 1 second
+
+6. Por último ejecutaremos ant run para comprobar que funcione corecctamente
+
+naila@naila-VirtualBox:~/Github/EjersTema2ED/Ejer23$ ant run
+Buildfile: /home/naila/Github/EjersTema2ED/Ejer23/build.xml
+
+init:
+
+compile:
+
+jar:
+
+run:
+     [java] Dados los números 5 y 2
+     [java] La suma es 7
+     [java] La resta es 3
+     [java] La multiplicación es 10
+     [java] La división es 2.5
+
+BUILD SUCCESSFUL
+Total time: 1 second
+
+
