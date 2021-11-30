@@ -1,0 +1,152 @@
+1. Instalamos gradle:
+
+naila@naila-VirtualBox:~/Github/EjersTema2ED/Ejer25/miapp$ sudo apt install gradle
+Reading package lists... Done
+Building dependency tree       
+Reading state information... Done
+
+2. Creamos el directorio miapp y no posicionamos en él: 
+
+naila@naila-VirtualBox:~/Github/EjersTema2ED/Ejer25$ mkdir miapp && cd miapp
+
+3. Creamos la estructura de carpetas con gradle: 
+naila@naila-VirtualBox:~/Github/EjersTema2ED/Ejer25/miapp$ gradle init --type java-application
+Starting a Gradle Daemon (subsequent builds will be faster)
+
+BUILD SUCCESSFUL in 8s
+2 actionable tasks: 2 executed
+
+4. Borramos las clases que viene por defecto: 
+
+naila@naila-VirtualBox:~/Github/EjersTema2ED/Ejer25/miapp$ rm  src/main/java/App.java  src/test/java/AppTest.java
+
+5. Creamos la primera clase en la siguiente ruta:
+
+naila@naila-VirtualBox:~/Github/EjersTema2ED/Ejer25/miapp$ cat > src/main/java/Main.java
+
+public class Main {
+
+  private static final int NUM1 = 5;
+  private static final int NUM2 = 2;
+
+
+  public static void main (String[] args) {
+    System.out.println ("Dados los números " + NUM1 + " y " + NUM2 );
+    System.out.println ("La suma es " + Aritmetica.suma(NUM1, NUM2) );
+    System.out.println ("La resta es " + Aritmetica.resta(NUM1, NUM2) );
+    System.out.println ("La multiplicación es " + Aritmetica.multiplicacion(NUM1, NUM2) );
+    System.out.println ("La división es " + Aritmetica.division(NUM1, NUM2) );
+  }
+}
+
+6. Creamos la segunda clase en la ruta que se muestra a continuación:
+
+naila@naila-VirtualBox:~/Github/EjersTema2ED/Ejer25/miapp$ cat > src/main/java/Aritmetica.java
+
+public class Aritmetica {
+
+  public static int suma (int sumando1, int sumando2) {
+        return (sumando1+sumando2);
+  }
+
+  public static int resta  (int minuendo, int sustraendo) {
+        return (minuendo-sustraendo);
+  }
+
+  public static int multiplicacion (int  numero1, int numero2) {
+        return (numero1*numero2);
+  }
+
+  public static float division (int dividendo, int divisor) {
+        return (dividendo/(float)divisor);
+  }
+
+}
+
+7. Creamos la tercera clase en la siguiente ruta:
+
+naila@naila-VirtualBox:~/Github/EjersTema2ED/Ejer25/miapp$ cat > src/test/java/MainTest.java
+
+import org.junit.Test;
+import static org.junit.Assert.*;
+
+public class MainTest {
+
+  @Test
+  public void testMain() {
+      // Prueba vacía
+  }
+}
+
+8. Creamos la cuarta clase en la ruta que tenemos a continuación:
+
+naila@naila-VirtualBox:~/Github/EjersTema2ED/Ejer25/miapp$ cat > src/test/java/AritmeticaTest.java
+
+import org.junit.Test;
+import static org.junit.Assert.*;
+
+public class AritmeticaTest {
+    
+    @Test 
+    public void testSuma() {
+        assertEquals("Suma (2,3) = 5", 5, Aritmetica.suma(2,3));
+    }
+
+}
+
+9. Editamos el archivo build.gradle para que tenga el siguiente contenido:
+
+naila@naila-VirtualBox:~/Github/EjersTema2ED/Ejer25/miapp$ cat > build.gradle 
+
+apply plugin: 'java'
+apply plugin: 'application'
+
+repositories {
+    jcenter()  
+}
+
+dependencies {
+    compile 'com.google.guava:guava:23.0' 
+    testCompile 'junit:junit:4.12'         
+}
+
+jar {
+    manifest {
+       attributes ('Main-Class': 'Main')
+    }
+}
+
+mainClassName = 'Main'
+
+10. Compilamos: 
+
+naila@naila-VirtualBox:~/Github/EjersTema2ED/Ejer25/miapp$ ./gradlew assemble
+Downloading https://services.gradle.org/distributions/gradle-4.4.1-bin.zip
+........................................................................
+Unzipping /home/naila/.gradle/wrapper/dists/gradle-4.4.1-bin/46gopw3g8i1v3zqqx4q
+
+11. Ejecutamos el archivo .jar:
+
+naila@naila-VirtualBox:~/Github/EjersTema2ED/Ejer25/miapp$ ./gradlew  run
+
+> Task :run 
+Dados los números 5 y 2
+La suma es 7
+La resta es 3
+La multiplicación es 10
+La división es 2.5
+
+
+BUILD SUCCESSFUL in 2s
+2 actionable tasks: 1 executed, 1 up-to-date
+
+12. Otra forma de ejecutarlo sería:
+
+naila@naila-VirtualBox:~/Github/EjersTema2ED/Ejer25/miapp$ java  -jar  build/libs/miapp.jar
+
+Dados los números 5 y 2
+La suma es 7
+La resta es 3
+La multiplicación es 10
+La división es 2.5
+
