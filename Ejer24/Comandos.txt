@@ -1,0 +1,203 @@
+1. Instalamos maven con el siguiente comando:
+
+naila@naila-VirtualBox:~/Github/EjersTema2ED/Ejer24$ sudo apt install maven
+[sudo] password for naila:
+Reading package lists... Done
+Building dependency tree
+Reading state information... Done
+
+2. Creamos el proyecto con el comando que tenemos a continuación:
+
+naila@naila-VirtualBox:~/Github/EjersTema2ED/Ejer24$ mvn archetype:generate -DgroupId=com.mycompany.app -DartifactId=my-app 
+
+3. Entra en la carpeta my-app y encontrarás un archivo pom.xml
+
+naila@naila-VirtualBox:~/Github/EjersTema2ED/Ejer24$ cd my-app && ls
+pom.xml  src
+
+4.Este archivo contiene una configuración básica.
+
+naila@naila-VirtualBox:~/Github/EjersTema2ED/Ejer24/my-app$ cat pom.xml
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.mycompany.app</groupId>
+  <artifactId>my-app</artifactId>
+  <packaging>jar</packaging>
+  <version>1.0-SNAPSHOT</version>
+  <name>my-app</name>
+  <url>http://maven.apache.org</url>
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+</project>
+
+6.Nos situamos en el directorio my app. Creamos una clase dentro de la siguiente ruta con el siguiente código fuente:
+
+naila@naila-VirtualBox:~/Github/EjersTema2ED/Ejer24/my-app$ cat > src/main/java/com/mycompany/app/App.java
+
+package com.mycompany.app;
+public class App {
+
+  private static final int NUM1 = 5;
+  private static final int NUM2 = 2;
+
+
+  public static void main (String[] args) {
+    System.out.println ("Dados los números " + NUM1 + " y " + NUM2 );
+    System.out.println ("La suma es " + Aritmetica.suma(NUM1, NUM2) );
+    System.out.println ("La resta es " + Aritmetica.resta(NUM1, NUM2) );
+    System.out.println ("La multiplicación es " + Aritmetica.multiplicacion(NUM1, NUM2) );
+    System.out.println ("La división es " + Aritmetica.division(NUM1, NUM2) );
+  }
+}
+
+7. Generamos también en la ruta que se muestra a continuación el siguiente archivo:
+
+naila@naila-VirtualBox:~/Github/EjersTema2ED/Ejer24/my-app$ cat > src/main/java/com/mycompany/app/Aritmetica.java
+
+package com.mycompany.app;
+public class Aritmetica {
+
+  public static int suma (int sumando1, int sumando2) {
+        return (sumando1+sumando2);
+  }
+
+  public static int resta  (int minuendo, int sustraendo) {
+        return (minuendo-sustraendo);
+  }
+
+  public static int multiplicacion (int  numero1, int numero2) {
+        return (numero1*numero2);
+  }
+
+  public static float division (int dividendo, int divisor) {
+        return (dividendo/(float)divisor);
+  }
+
+}
+
+8. Creamos otra clase dentro de la siguiente ruta:
+
+naila@naila-VirtualBox:~/Github/EjersTema2ED/Ejer24/my-app$ cat > src/test/java/com/mycompany/app/AppTest.java
+
+package com.mycompany.app;
+import org.junit.Test;
+import static org.junit.Assert.*;
+
+public class AppTest {
+
+  @Test
+  public void testMain() {
+      // Prueba vacía
+  }
+
+}
+
+9. Creamos el archivo con el código fuente en la ruta que se muestra a continuación.
+
+naila@naila-VirtualBox:~/Github/EjersTema2ED/Ejer24/my-app$ cat > src/test/java/com/mycompany/app/AritmeticaTest.java
+
+package com.mycompany.app;
+import org.junit.Test;
+import static org.junit.Assert.*;
+
+public class AritmeticaTest {
+
+    @Test
+    public void testSuma() {
+        assertEquals("Suma (2,3) = 5", 5, Aritmetica.suma(2,3));
+    }
+}
+
+10. Modificamos el archivo pom.xml oara que aparezca tal y como se muestra a continuación:
+ 
+naila@naila-VirtualBox:~/Github/EjersTema2ED/Ejer24/my-app$ cat > pom.xml
+
+<project>
+
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.miempresa.app</groupId>
+  <artifactId>mi-app</artifactId>
+  <version>1.0.0</version>
+  <name>mi-app</name>
+
+  <build>
+    <plugins>
+      <plugin>
+        <!-- Para construir un JAR ejecutable -->
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jar-plugin</artifactId>
+        <version>3.0.2</version>
+        <configuration>
+          <archive>   
+            <manifest>
+              <addClasspath>true</addClasspath>
+              <classpathPrefix>./</classpathPrefix>
+              <mainClass>com.miempresa.app.App</mainClass>
+            </manifest>
+          </archive>
+        </configuration>
+      </plugin>
+
+      <plugin>
+        <!-- Para ejecutar el JAR creado --> 
+        <groupId>org.codehaus.mojo</groupId>
+          <artifactId>exec-maven-plugin</artifactId>
+          <version>1.2.1</version>
+          <configuration>
+            <mainClass>com.miempresa.app.App</mainClass>
+          </configuration>
+       </plugin>
+    </plugins>
+  </build>
+
+  <dependencies>
+    <dependency>
+      <!-- Prueba de unidades -->
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.12</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+
+</project>
+
+11. Compilamos:
+
+naila@naila-VirtualBox:~/Github/EjersTema2ED/Ejer24/my-app$ mvn compile
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ----------------------< com.miempresa.app:mi-app >----------------------
+[INFO] Building mi-app 1.0.0
+[INFO] --------------------------------[ jar ]---------------------------------
+
+/s)
+Downloaded from central: https://repo.maven.apache.org/maven2/com/google/collections/google-collections/1.0/google-collections-1.0.jar (640 kB at 720 kB/s)
+[INFO] Changes detected - recompiling the module!
+
+[INFO] Compiling 2 source files to /home/naila/Github/EjersTema2ED/Ejer24/my-app/target/classes
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  13.158 s
+[INFO] Finished at: 2021-11-29T12:10:26+01:00
+[INFO] ------------------------------------------------------------------------
+
+12. Ejecutamos el bytecode:
+
+naila@naila-VirtualBox:~/Github/EjersTema2ED/Ejer24/my-app$ cd target/classes && java com.mycompany.app.App && cd ../..
+
+Dados los números 5 y 2
+La suma es 7
+La resta es 3
+La multiplicación es 10
+La división es 2.5
+
+
